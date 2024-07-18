@@ -6,11 +6,16 @@ on:
     - main
     - develop
     - feature/*
+  pull_request:
+    branches:
+    - main
+    - develop
+    - feature/*
 
 jobs:
   build:
-    name: Build with ${{ matrix.configuration }}
-    runs-on: ubuntu-latest
+    name: Build with ${{ matrix.configuration }} on ${{ matrix.platform }}
+    runs-on: ${{ matrix.platform }}
     
     strategy:
       fail-fast: false
@@ -18,6 +23,10 @@ jobs:
         configuration:
         - Debug
         - Release
+        platform:
+        - windows-latest
+        - ubuntu-latest
+        - macos-latest
     
     steps:
     - name: Checkout source code
