@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  push:
+    branches:
+    - main
+    - develop
+    - feature/*
+
+jobs:
+  build:
+    name: Build with ${{ matrix.configuration }}
+    runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        configuration:
+        - Debug
+        - Release
+    
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+    
+    - name: Build source code
+      run: dotnet build . -c ${{ matrix.configuration }}
