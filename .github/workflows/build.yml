@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  push:
+    branches:
+    - main
+    - develop
+    - feature/*
+  pull_request:
+    branches:
+    - main
+    - develop
+    - feature/*
+
+jobs:
+  build:
+    name: Build with ${{ matrix.configuration }} on ${{ matrix.platform }}
+    runs-on: ${{ matrix.platform }}
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        configuration:
+        - Debug
+        - Release
+        platform:
+        - windows-latest
+        - ubuntu-latest
+        - macos-latest
+    
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+    
+    - name: Build source code
+      run: dotnet build . -c ${{ matrix.configuration }}
