@@ -11,9 +11,4 @@
     <PackageReference Include="MongoDB.Driver" Version="2.27.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>
