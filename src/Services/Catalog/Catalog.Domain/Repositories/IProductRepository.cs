@@ -10,6 +10,8 @@ namespace Catalog.Domain.Repositories
 
         Task<IEnumerable<Product>> GetByName(string name);
 
+        Task<IEnumerable<Product>> GetByBrand(string brandName);
+
         Task<Product> Create(Product product);
 
         Task<bool> Update(Product product);

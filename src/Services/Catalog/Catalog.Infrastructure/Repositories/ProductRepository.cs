@@ -42,6 +42,17 @@ namespace Catalog.Infrastructure.Repositories
             return await _context.Products.Find(filter).ToListAsync();
         }
 
+        public async Task<IEnumerable<Product>> GetByBrand(string brandName)
+        {
+            var filter = Builders<Product>.Filter.Where(
+                p => p.Brand != null &&
+                p.Brand.Name != null &&
+                p.Brand.Name.ToLower().Contains(brandName.ToLower())
+                );
+
+            return await _context.Products.Find(filter).ToListAsync();
+        }
+
         public async Task<bool> Update(Product product)
         {
             var updateResult = await _context.Products.ReplaceOneAsync(p => p.Id == product.Id, product);
