@@ -15,6 +15,11 @@ namespace Catalog.Application.Commands.Handlers
 
         public async Task<bool> Handle(DeleteProductByIdCommand request, CancellationToken cancellationToken)
         {
+            if (!request.Id.IsValidHex24Id())
+            {
+                throw new InvalidIdException(request.Id);
+            }
+
             var product = await _productRepository.GetById(request.Id);
 
             if (product == null)

@@ -17,6 +17,11 @@ namespace Catalog.Application.Queries.Handlers
 
         public async Task<ProductResponse> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
+            if (!request.Id.IsValidHex24Id())
+            {
+                throw new InvalidIdException(request.Id);
+            }
+
             var product = await _productRepository.GetById(request.Id);
 
             if (product == null)
