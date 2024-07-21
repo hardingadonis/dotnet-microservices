@@ -19,7 +19,6 @@ namespace Catalog.Application.Mappers
                 .ForMember(dest => dest.Category, opt => opt.Ignore());
 
             CreateMap<UpdateProductCommand, Product>()
-                .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Brand, opt => opt.Ignore())
                 .ForMember(dest => dest.Category, opt => opt.Ignore());
         }
