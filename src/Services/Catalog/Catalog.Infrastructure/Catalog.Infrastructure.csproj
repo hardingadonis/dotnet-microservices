@@ -21,7 +21,7 @@
     <None Update="Data\SeedData\categories.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Data\SeedData\product.json">
+    <None Update="Data\SeedData\products.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

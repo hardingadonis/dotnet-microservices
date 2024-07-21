@@ -36,7 +36,7 @@ namespace Catalog.Infrastructure.Data
             // Seed the data
             BrandContextSeed.SeedData(Brands);
             CategoryContextSeed.SeedData(Categories);
-            BrandContextSeed.SeedData(Brands);
+            ProductContextSeed.SeedData(Products);
         }
     }
 }
