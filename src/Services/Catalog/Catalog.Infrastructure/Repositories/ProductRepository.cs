@@ -37,7 +37,7 @@ namespace Catalog.Infrastructure.Repositories
 
         public async Task<IEnumerable<Product>> GetByName(string name)
         {
-            var filter = Builders<Product>.Filter.Eq(p => p.Name, new BsonRegularExpression(name, "i"));
+            var filter = Builders<Product>.Filter.Regex(p => p.Name, new BsonRegularExpression(name, "i"));
 
             return await _context.Products.Find(filter).ToListAsync();
         }
@@ -48,7 +48,7 @@ namespace Catalog.Infrastructure.Repositories
                 p => p.Brand != null &&
                 p.Brand.Name != null &&
                 p.Brand.Name.ToLower().Contains(brandName.ToLower())
-                );
+            );
 
             return await _context.Products.Find(filter).ToListAsync();
         }
