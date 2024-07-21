@@ -12,7 +12,7 @@ namespace Catalog.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllCategories()
+        public async Task<IActionResult> GetAll()
         {
             var query = new GetAllCategoriesQuery();
 
