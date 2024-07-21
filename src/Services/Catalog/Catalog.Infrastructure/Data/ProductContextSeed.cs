@@ -6,14 +6,14 @@ namespace Catalog.Infrastructure.Data
 {
     public static class ProductContextSeed
     {
-        public static async void SeedData(IMongoCollection<Product> productCollection)
+        public static async Task SeedData(IMongoCollection<Product> productCollection)
         {
-            bool isExistProduct = productCollection.Find(_ => true).Any();
+            bool isExistProduct = await productCollection.Find(_ => true).AnyAsync();
 
             if (!isExistProduct)
             {
                 string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "SeedData", "products.json");
-                string productsData = File.ReadAllText(path);
+                string productsData = await File.ReadAllTextAsync(path);
                 var products = JsonSerializer.Deserialize<IEnumerable<Product>>(productsData);
 
                 await productCollection.InsertManyAsync(products);

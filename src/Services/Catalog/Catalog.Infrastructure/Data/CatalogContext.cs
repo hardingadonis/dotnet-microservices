@@ -34,9 +34,11 @@ namespace Catalog.Infrastructure.Data
                 );
 
             // Seed the data
-            BrandContextSeed.SeedData(Brands);
-            CategoryContextSeed.SeedData(Categories);
-            ProductContextSeed.SeedData(Products);
+            var brandTask = BrandContextSeed.SeedData(Brands);
+            var categoryTask = CategoryContextSeed.SeedData(Categories);
+            var productTask = ProductContextSeed.SeedData(Products);
+
+            Task.WhenAll(brandTask, categoryTask, productTask).Wait();
         }
     }
 }

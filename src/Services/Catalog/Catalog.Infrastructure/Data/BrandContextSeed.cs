@@ -6,14 +6,14 @@ namespace Catalog.Infrastructure.Data
 {
     public static class BrandContextSeed
     {
-        public static async void SeedData(IMongoCollection<Brand> brandCollection)
+        public static async Task SeedData(IMongoCollection<Brand> brandCollection)
         {
-            bool isExistBrand = brandCollection.Find(_ => true).Any();
+            bool isExistBrand = await brandCollection.Find(_ => true).AnyAsync();
 
             if (!isExistBrand)
             {
                 string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "SeedData", "brands.json");
-                string barndsData = File.ReadAllText(path);
+                string barndsData = await File.ReadAllTextAsync(path);
                 var brands = JsonSerializer.Deserialize<IEnumerable<Brand>>(barndsData);
 
                 await brandCollection.InsertManyAsync(brands);

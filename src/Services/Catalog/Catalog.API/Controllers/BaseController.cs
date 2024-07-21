@@ -13,7 +13,7 @@ namespace Catalog.API.Controllers
     {
         private readonly IMediator _mediator;
 
-        public BaseController(IMediator mediator)
+        protected BaseController(IMediator mediator)
         {
             _mediator = mediator;
         }
