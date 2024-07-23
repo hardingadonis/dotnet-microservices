@@ -1,6 +1,7 @@
 ﻿using Catalog.Application.Commands;
 using Catalog.Application.Queries;
 using Catalog.Application.Responses;
+using Catalog.Domain.Specs;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,11 +14,11 @@ namespace Catalog.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetProducts([FromQuery] CatalogSpecParams catalogSpecParams)
         {
-            var query = new GetAllProductsQuery();
+            var query = new GetProductsQuery(catalogSpecParams);
 
-            return await ExecuteAsync<GetAllProductsQuery, IEnumerable<ProductResponse>>(query);
+            return await ExecuteAsync<GetProductsQuery, Pagination<ProductResponse>>(query);
         }
 
         [HttpGet]

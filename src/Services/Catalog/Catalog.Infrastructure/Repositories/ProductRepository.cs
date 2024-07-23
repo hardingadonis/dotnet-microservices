@@ -1,5 +1,6 @@
 using Catalog.Domain.Entities;
 using Catalog.Domain.Repositories;
+using Catalog.Domain.Specs;
 using Catalog.Infrastructure.Data;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -25,7 +26,7 @@ namespace Catalog.Infrastructure.Repositories
             return deleteResult.IsAcknowledged && deleteResult.DeletedCount > 0;
         }
 
-        public async Task<IEnumerable<Product>> GetAll()
+        public async Task<Pagination<Product>> GetProducts(CatalogSpecParams catalogSpecParams)
         {
             return await _context.Products.Find(_ => true).ToListAsync();
         }
