@@ -7,3 +7,5 @@ services:
     build:
       context: .
       dockerfile: src/Services/Catalog/Catalog.API/Dockerfile
+    depends_on:
+      - catalogdb
