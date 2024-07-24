@@ -1,0 +1,9 @@
+services:
+  catalogdb:
+    image: mongo
+
+  catalog.api:
+    image: ghcr.io/hardingadonis/catalog.api:latest
+    build:
+      context: .
+      dockerfile: src/Services/Catalog/Catalog.API/Dockerfile
