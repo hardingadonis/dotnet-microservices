@@ -33,4 +33,4 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Build source code
-      run: dotnet build . -c ${{ matrix.configuration }}
+      run: dotnet build ./EcommerceShop.sln -c ${{ matrix.configuration }}
