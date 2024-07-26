@@ -5,7 +5,7 @@ using Catalog.Domain.Specs;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Catalog.API.Controllers
+namespace Catalog.API.Controllers.v1
 {
     public class ProductsController : BaseController
     {

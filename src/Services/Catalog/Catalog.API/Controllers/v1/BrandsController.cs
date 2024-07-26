@@ -3,7 +3,7 @@ using Catalog.Application.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Catalog.API.Controllers
+namespace Catalog.API.Controllers.v1
 {
     public class BrandsController : BaseController
     {
