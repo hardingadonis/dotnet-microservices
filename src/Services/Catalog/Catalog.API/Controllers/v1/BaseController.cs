@@ -41,7 +41,7 @@ namespace Catalog.API.Controllers.v1
             return null!;
         }
 
-        protected async Task<IActionResult> ExecuteAsync<TRequest, TResponse>(TRequest request)
+        protected async Task<IActionResult> ExecuteAsync<TRequest, TResponse>(TRequest request, HttpStatusCode statusCode = HttpStatusCode.OK)
             where TRequest : class, IRequest<TResponse>
         {
             var validationResult = ValidateRequest<TRequest, TResponse>(request);
@@ -55,7 +55,7 @@ namespace Catalog.API.Controllers.v1
             {
                 var response = await _mediator.Send(request);
 
-                return Ok(new ApiResponse<TResponse>
+                return StatusCode((int)statusCode, new ApiResponse<TResponse>
                 {
                     IsSuccess = true,
                     Data = response,
