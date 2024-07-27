@@ -1,8 +1,3 @@
-using Catalog.Domain.Exceptions;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
-
 namespace Catalog.API.Controllers.v1
 {
     [ApiController]

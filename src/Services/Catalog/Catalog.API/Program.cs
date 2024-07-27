@@ -1,11 +1,3 @@
-using Asp.Versioning;
-using Asp.Versioning.Conventions;
-using Catalog.API.Swagger;
-using Catalog.Application;
-using Catalog.Infrastructure;
-using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

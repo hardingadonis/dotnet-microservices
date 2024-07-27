@@ -1,10 +1,4 @@
-﻿using Catalog.Application.Queries;
-using Catalog.Application.Responses;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
-
-namespace Catalog.API.Controllers.v1
+﻿namespace Catalog.API.Controllers.v1
 {
     public class CategoriesController : BaseController
     {

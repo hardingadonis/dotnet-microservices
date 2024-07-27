@@ -1,12 +1,4 @@
-﻿using Catalog.Application.Commands;
-using Catalog.Application.Queries;
-using Catalog.Application.Responses;
-using Catalog.Domain.Specs;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
-
-namespace Catalog.API.Controllers.v1
+﻿namespace Catalog.API.Controllers.v1
 {
     public class ProductsController : BaseController
     {
