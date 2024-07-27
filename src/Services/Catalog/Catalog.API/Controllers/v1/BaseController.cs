@@ -33,8 +33,7 @@ namespace Catalog.API.Controllers.v1
                 return BadRequest(new ApiResponse<TResponse>
                 {
                     IsSuccess = false,
-                    Message = "Invalid request.",
-                    Error = ModelState
+                    Message = "Invalid request."
                 });
             }
 
