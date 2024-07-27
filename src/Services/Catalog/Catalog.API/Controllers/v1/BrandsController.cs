@@ -2,6 +2,7 @@
 using Catalog.Application.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Catalog.API.Controllers.v1
 {
@@ -12,6 +13,7 @@ namespace Catalog.API.Controllers.v1
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(ApiResponse<IEnumerable<BrandResponse>>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetAll()
         {
             var query = new GetAllBrandsQuery();
