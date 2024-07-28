@@ -2,13 +2,18 @@ namespace Catalog.API.Controllers.v1
 {
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public abstract class BaseController : ControllerBase
+    public abstract class BaseController<T> : ControllerBase
+        where T : BaseController<T>
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<T> _logger;
 
-        protected BaseController(IMediator mediator)
+        protected ILogger<T> Logger => _logger;
+
+        protected BaseController(IMediator mediator, ILogger<T> logger)
         {
-            _mediator = mediator;
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         private BadRequestObjectResult ValidateRequest<TRequest, TResponse>(TRequest request)
@@ -67,6 +72,8 @@ namespace Catalog.API.Controllers.v1
             // Log the exception if needed
             var statusCode = HttpStatusCode.InternalServerError;
             var message = "An error occurred while processing the request";
+
+            _logger.LogDebug(ex, message);
 
             if (ex is CatalogException)
             {

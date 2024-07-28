@@ -1,8 +1,9 @@
 ﻿namespace Catalog.API.Controllers.v1
 {
-    public class ProductsController : BaseController
+    public class ProductsController : BaseController<ProductsController>
     {
-        public ProductsController(IMediator mediator) : base(mediator)
+        public ProductsController(IMediator mediator, ILogger<ProductsController> logger)
+            : base(mediator, logger)
         {
         }
 
@@ -11,6 +12,8 @@
         public async Task<IActionResult> GetProducts([FromQuery] CatalogSpecParams catalogSpecParams)
         {
             var query = new GetProductsQuery(catalogSpecParams);
+
+            Logger.LogInformation($"Executing: {nameof(GetProductsQuery)}");
 
             return await ExecuteAsync<GetProductsQuery, Pagination<ProductResponse>>(query);
         }
@@ -22,6 +25,8 @@
         {
             var query = new GetProductByIdQuery(id);
 
+            Logger.LogInformation($"Executing: {nameof(GetProductByIdQuery)} with id = {id}");
+
             return await ExecuteAsync<GetProductByIdQuery, ProductResponse>(query);
         }
 
@@ -32,6 +37,8 @@
         {
             var query = new GetProductByNameQuery(name);
 
+            Logger.LogInformation($"Executing: {nameof(GetProductByNameQuery)} with name = {name}");
+
             return await ExecuteAsync<GetProductByNameQuery, IEnumerable<ProductResponse>>(query);
         }
 
@@ -39,6 +46,8 @@
         [ProducesResponseType(typeof(ApiResponse<ProductResponse>), (int)HttpStatusCode.Created)]
         public async Task<IActionResult> Create([FromBody] CreateProductCommand command)
         {
+            Logger.LogInformation($"Executing: {nameof(CreateProductCommand)}");
+
             return await ExecuteAsync<CreateProductCommand, ProductResponse>(command, HttpStatusCode.Created);
         }
 
@@ -56,8 +65,12 @@
                     Details = "The Id provided in the request body does not match the Id specified in the URL."
                 };
 
+                Logger.LogDebug(errorResponse.Message);
+
                 return BadRequest(errorResponse);
             }
+
+            Logger.LogInformation($"Executing: {nameof(UpdateProductCommand)} with id = {id}");
 
             return await ExecuteAsync<UpdateProductCommand, bool>(command);
         }
@@ -68,6 +81,8 @@
         public async Task<IActionResult> DeleteById(string id)
         {
             var command = new DeleteProductByIdCommand(id);
+
+            Logger.LogInformation($"Executing: {nameof(DeleteProductByIdCommand)} with id = {id}");
 
             return await ExecuteAsync<DeleteProductByIdCommand, bool>(command);
         }

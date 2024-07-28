@@ -1,8 +1,9 @@
 ﻿namespace Catalog.API.Controllers.v1
 {
-    public class CategoriesController : BaseController
+    public class CategoriesController : BaseController<CategoriesController>
     {
-        public CategoriesController(IMediator mediator) : base(mediator)
+        public CategoriesController(IMediator mediator, ILogger<CategoriesController> logger)
+            : base(mediator, logger)
         {
         }
 
@@ -11,6 +12,8 @@
         public async Task<IActionResult> GetAll()
         {
             var query = new GetAllCategoriesQuery();
+
+            Logger.LogInformation($"Executing: {nameof(GetAllCategoriesQuery)}");
 
             return await ExecuteAsync<GetAllCategoriesQuery, IEnumerable<CategoryResponse>>(query);
         }
