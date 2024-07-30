@@ -1,21 +1,19 @@
-using Asp.Versioning;
-using Catalog.Domain.Exceptions;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
-
-namespace Catalog.API.Controllers
+namespace Catalog.API.Controllers.v1
 {
-    [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public abstract class BaseController : ControllerBase
+    [Route("api/v{version:apiVersion}/[controller]")]
+    public abstract class BaseController<T> : ControllerBase
+        where T : BaseController<T>
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<BaseController<T>> _logger;
 
-        protected BaseController(IMediator mediator)
+        protected ILogger<BaseController<T>> Logger => _logger;
+
+        protected BaseController(IMediator mediator, ILogger<BaseController<T>> logger)
         {
-            _mediator = mediator;
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         private BadRequestObjectResult ValidateRequest<TRequest, TResponse>(TRequest request)
@@ -35,15 +33,14 @@ namespace Catalog.API.Controllers
                 return BadRequest(new ApiResponse<TResponse>
                 {
                     IsSuccess = false,
-                    Message = "Invalid request.",
-                    Error = ModelState
+                    Message = "Invalid request."
                 });
             }
 
             return null!;
         }
 
-        protected async Task<IActionResult> ExecuteAsync<TRequest, TResponse>(TRequest request)
+        protected async Task<IActionResult> ExecuteAsync<TRequest, TResponse>(TRequest request, HttpStatusCode statusCode = HttpStatusCode.OK)
             where TRequest : class, IRequest<TResponse>
         {
             var validationResult = ValidateRequest<TRequest, TResponse>(request);
@@ -57,7 +54,7 @@ namespace Catalog.API.Controllers
             {
                 var response = await _mediator.Send(request);
 
-                return Ok(new ApiResponse<TResponse>
+                return StatusCode((int)statusCode, new ApiResponse<TResponse>
                 {
                     IsSuccess = true,
                     Data = response,
@@ -75,6 +72,8 @@ namespace Catalog.API.Controllers
             // Log the exception if needed
             var statusCode = HttpStatusCode.InternalServerError;
             var message = "An error occurred while processing the request";
+
+            _logger.LogError(ex, message);
 
             if (ex is CatalogException)
             {

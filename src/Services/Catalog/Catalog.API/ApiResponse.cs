@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-
-namespace Catalog.API
+﻿namespace Catalog.API
 {
     public class ApiResponse<T>
     {
@@ -11,7 +9,5 @@ namespace Catalog.API
         public string Message { get; set; } = string.Empty;
 
         public string Details { get; set; } = string.Empty;
-
-        public ModelStateDictionary? Error { get; set; }
     }
 }
