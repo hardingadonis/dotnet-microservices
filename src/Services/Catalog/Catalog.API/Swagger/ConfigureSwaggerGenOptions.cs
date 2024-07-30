@@ -3,10 +3,12 @@
     public class ConfigureSwaggerGenOptions : IConfigureNamedOptions<SwaggerGenOptions>
     {
         private readonly IApiVersionDescriptionProvider _provider;
+        private readonly IConfiguration _configuration;
 
-        public ConfigureSwaggerGenOptions(IApiVersionDescriptionProvider provider)
+        public ConfigureSwaggerGenOptions(IApiVersionDescriptionProvider provider, IConfiguration configuration)
         {
             _provider = provider;
+            _configuration = configuration;
         }
 
         public void Configure(string? name, SwaggerGenOptions options)
@@ -24,6 +26,9 @@
 
         private OpenApiInfo CreateVersionInfo(ApiVersionDescription description)
         {
+            var contactUrl = _configuration["Catalog.API.Settings:ContactUrl"];
+            var licenseUrl = _configuration["Catalog.API.Settings:LicenseUrl"];
+
             var info = new OpenApiInfo()
             {
                 Title = $"Catalog.API v{description.ApiVersion}",
@@ -32,12 +37,12 @@
                 {
                     Name = "Minh Vương",
                     Email = "hardingadonis@gmail.com",
-                    Url = new Uri("https://hardingadonis.github.io")
+                    Url = new Uri(contactUrl!)
                 },
                 License = new OpenApiLicense()
                 {
                     Name = "MIT License",
-                    Url = new Uri("https://github.com/hardingadonis/dotnet-microservices/blob/main/LICENSE")
+                    Url = new Uri(licenseUrl!)
                 }
             };
 

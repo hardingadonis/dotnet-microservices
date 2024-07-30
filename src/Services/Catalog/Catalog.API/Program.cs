@@ -42,11 +42,11 @@ if (app.Environment.IsDevelopment())
     {
         var descriptions = app.DescribeApiVersions();
 
-        foreach (var description in descriptions)
+        foreach (var description in descriptions.Select(_ => _.GroupName))
         {
             options.SwaggerEndpoint(
-                $"/swagger/{description.GroupName}/swagger.json",
-                $"Catalog.API {description.GroupName.ToLowerInvariant()}"
+                $"/swagger/{description}/swagger.json",
+                $"Catalog.API {description.ToLowerInvariant()}"
             );
         }
     });

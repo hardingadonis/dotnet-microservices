@@ -25,7 +25,8 @@
         {
             var query = new GetProductByIdQuery(id);
 
-            Logger.LogInformation($"Executing: {nameof(GetProductByIdQuery)} with id = {id}");
+            Logger.LogInformation($"Executing: {nameof(GetProductByIdQuery)}");
+            Logger.LogDebug("Executing: {method} with id = {id}", nameof(GetProductByIdQuery), id);
 
             return await ExecuteAsync<GetProductByIdQuery, ProductResponse>(query);
         }
@@ -37,7 +38,8 @@
         {
             var query = new GetProductByNameQuery(name);
 
-            Logger.LogInformation($"Executing: {nameof(GetProductByNameQuery)} with name = {name}");
+            Logger.LogInformation($"Executing: {nameof(GetProductByNameQuery)}");
+            Logger.LogDebug("Executing: {method} with name = {name}", nameof(GetProductByNameQuery), name);
 
             return await ExecuteAsync<GetProductByNameQuery, IEnumerable<ProductResponse>>(query);
         }
@@ -65,12 +67,13 @@
                     Details = "The Id provided in the request body does not match the Id specified in the URL."
                 };
 
-                Logger.LogDebug(errorResponse.Message);
+                Logger.LogError(errorResponse.Message);
 
                 return BadRequest(errorResponse);
             }
 
-            Logger.LogInformation($"Executing: {nameof(UpdateProductCommand)} with id = {id}");
+            Logger.LogInformation($"Executing: {nameof(UpdateProductCommand)}");
+            Logger.LogDebug("Executing: {method} with id = {id}", nameof(UpdateProductCommand), id);
 
             return await ExecuteAsync<UpdateProductCommand, bool>(command);
         }
@@ -82,7 +85,8 @@
         {
             var command = new DeleteProductByIdCommand(id);
 
-            Logger.LogInformation($"Executing: {nameof(DeleteProductByIdCommand)} with id = {id}");
+            Logger.LogInformation($"Executing: {nameof(DeleteProductByIdCommand)}");
+            Logger.LogDebug("Executing: {method} with id = {id}", nameof(DeleteProductByIdCommand), id);
 
             return await ExecuteAsync<DeleteProductByIdCommand, bool>(command);
         }

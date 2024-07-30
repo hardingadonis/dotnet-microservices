@@ -6,11 +6,11 @@ namespace Catalog.API.Controllers.v1
         where T : BaseController<T>
     {
         private readonly IMediator _mediator;
-        private readonly ILogger<T> _logger;
+        private readonly ILogger<BaseController<T>> _logger;
 
-        protected ILogger<T> Logger => _logger;
+        protected ILogger<BaseController<T>> Logger => _logger;
 
-        protected BaseController(IMediator mediator, ILogger<T> logger)
+        protected BaseController(IMediator mediator, ILogger<BaseController<T>> logger)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -73,7 +73,7 @@ namespace Catalog.API.Controllers.v1
             var statusCode = HttpStatusCode.InternalServerError;
             var message = "An error occurred while processing the request";
 
-            _logger.LogDebug(ex, message);
+            _logger.LogError(ex, message);
 
             if (ex is CatalogException)
             {
