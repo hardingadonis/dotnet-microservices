@@ -27,7 +27,7 @@ jobs:
       id: get_version
       run: |
         chmod +x get_version.sh
-        echo "version=$(./get_version.sh)" >> $GITHUB_OUTPUT
+        echo "version=$(./get_version.sh 1)" >> $GITHUB_OUTPUT
     
     - name: Login ghcr.io
       uses: docker/login-action@v3
@@ -39,5 +39,10 @@ jobs:
     - name: Publish catalog.api image
       run: |
         cp ./src/Services/Catalog/Catalog.API/Dockerfile .
-        docker buildx . -t ghcr.io/hardingadonis/dotnet-microservices-catalog.api:${{ steps.get_version.outputs.version }}
-        docker push ghcr.io/hardingadonis/dotnet-microservices-catalog.api:${{ steps.get_version.outputs.version }}
+        docker buildx build . \
+          -t ghcr.io/${{ github.repository_owner }}/dotnet-microservices-catalog.api:${{ steps.get_version.outputs.version }} \
+          -t ghcr.io/${{ github.repository_owner }}/dotnet-microservices-catalog.api:latest \
+          --platform=linux/amd64 \
+          --load
+        docker push ghcr.io/${{ github.repository_owner }}/dotnet-microservices-catalog.api:${{ steps.get_version.outputs.version }}
+        docker push ghcr.io/${{ github.repository_owner }}/dotnet-microservices-catalog.api:latest
