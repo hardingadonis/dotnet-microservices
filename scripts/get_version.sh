@@ -10,16 +10,16 @@ fi
 
 case "$1" in
     1)
-        CSPROJ_FILE="src/Services/Catalog/Catalog.API/Catalog.API.csproj"
+        CSPROJ_FILE="../src/Services/Catalog/Catalog.API/Catalog.API.csproj"
         ;;
     2)
-        CSPROJ_FILE="src/Services/Basket/Basket.API/Basket.API.csproj"
+        CSPROJ_FILE="../src/Services/Basket/Basket.API/Basket.API.csproj"
         ;;
     3)
-        CSPROJ_FILE="src/Services/Discount/Discount.API/Discount.API.csproj"
+        CSPROJ_FILE="../src/Services/Discount/Discount.API/Discount.API.csproj"
         ;;
     4)
-        CSPROJ_FILE="src/Services/Ordering/Ordering.API/Ordering.API.csproj"
+        CSPROJ_FILE="../src/Services/Ordering/Ordering.API/Ordering.API.csproj"
         ;;
     *)
         echo "Invalid option"
