@@ -19,9 +19,9 @@ namespace Catalog.Application.Commands.Handlers
             IBrandRepository brandRepository
             )
         {
-            _productRepository = productRepository;
-            _categoryRepository = categoryRepository;
-            _brandRepository = brandRepository;
+            _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
+            _categoryRepository = categoryRepository ?? throw new ArgumentException(nameof(categoryRepository));
+            _brandRepository = brandRepository ?? throw new ArgumentException(nameof(brandRepository));
         }
 
         public async Task<ProductResponse> Handle(CreateProductCommand request, CancellationToken cancellationToken)
