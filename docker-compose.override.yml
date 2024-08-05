@@ -17,6 +17,7 @@ services:
     container_name: catalog.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=https://+:8081;http://+:8080
       - "DatabaseSettings__ConnectionString=mongodb://catalogdb:27017"
     ports:
       - "8080:8080"
@@ -26,6 +27,7 @@ services:
     container_name: basket.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=https://+:8083;http://+:8082
       - "DatabaseSettings__ConnectionString=basketdb:6379"
     ports:
       - "8082:8082"
