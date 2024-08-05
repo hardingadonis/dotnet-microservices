@@ -1,7 +1,10 @@
 services:
   catalogdb:
     image: mongo:latest
-
+  
+  basketdb:
+    image: redis:latest
+  
   catalog.api:
     image: ghcr.io/hardingadonis/dotnet-microservices-catalog.api:latest
     build:
@@ -9,3 +12,11 @@ services:
       dockerfile: src/Services/Catalog/Catalog.API/Dockerfile
     depends_on:
       - catalogdb
+  
+  basket.api:
+    image: ghcr.io/hardingadonis/basket.api:latest
+    build:
+      context: .
+      dockerfile: src/Services/Basket/Basket.API/Dockerfile
+    depends_on:
+      - basketdb
