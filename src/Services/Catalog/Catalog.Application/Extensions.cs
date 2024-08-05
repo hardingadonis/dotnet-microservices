@@ -7,7 +7,7 @@ namespace Catalog.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Extensions).Assembly));
-            services.AddAutoMapper(typeof(Extensions));
+            services.AddAutoMapper(typeof(Extensions).Assembly);
 
             return services;
         }

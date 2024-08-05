@@ -10,7 +10,7 @@ namespace Catalog.Application.Commands.Handlers
 
         public DeleteProductByIdHandler(IProductRepository productRepository)
         {
-            _productRepository = productRepository;
+            _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
         }
 
         public async Task<bool> Handle(DeleteProductByIdCommand request, CancellationToken cancellationToken)

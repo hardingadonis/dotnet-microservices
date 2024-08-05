@@ -2,6 +2,7 @@
 using Catalog.Application.Commands;
 using Catalog.Application.Responses;
 using Catalog.Domain.Entities;
+using Catalog.Domain.Specs;
 
 namespace Catalog.Application.Mappers
 {
@@ -21,6 +22,8 @@ namespace Catalog.Application.Mappers
             CreateMap<UpdateProductCommand, Product>()
                 .ForMember(dest => dest.Brand, opt => opt.Ignore())
                 .ForMember(dest => dest.Category, opt => opt.Ignore());
+
+            CreateMap<Pagination<Product>, Pagination<ProductResponse>>().ReverseMap();
         }
     }
 }
