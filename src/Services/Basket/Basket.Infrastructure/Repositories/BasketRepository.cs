@@ -5,14 +5,9 @@ using System.Text.Json;
 
 namespace Basket.Infrastructure.Repositories
 {
-    public class BasketRepository : IBasketRepository
+    public class BasketRepository(IDistributedCache redisCache) : IBasketRepository
     {
-        private readonly IDistributedCache _redisCache;
-
-        public BasketRepository(IDistributedCache redisCache)
-        {
-            _redisCache = redisCache;
-        }
+        private readonly IDistributedCache _redisCache = redisCache;
 
         public async Task<ShoppingCart?> GetBasket(string userName)
         {
