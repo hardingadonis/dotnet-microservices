@@ -2,7 +2,7 @@
 {
     public class BasketsController : BaseController<BasketsController>
     {
-        public BasketsController(IMediator mediator, ILogger<BaseController<BasketsController>> logger)
+        public BasketsController(IMediator mediator, ILogger<BasketsController> logger)
             : base(mediator, logger)
         {
         }
