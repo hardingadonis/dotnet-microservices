@@ -4,7 +4,7 @@
     {
         public string UserName { get; set; } = string.Empty;
 
-        public List<BasketItemResponse> Items { get; set; } = [];
+        public IList<BasketItemResponse> Items { get; set; } = [];
 
         public decimal TotalPrice
         {
