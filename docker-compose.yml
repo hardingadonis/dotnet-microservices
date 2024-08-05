@@ -14,7 +14,7 @@ services:
       - catalogdb
   
   basket.api:
-    image: ghcr.io/hardingadonis/basket.api:latest
+    image: ghcr.io/hardingadonis/dotnet-microservices-basket.api:latest
     build:
       context: .
       dockerfile: src/Services/Basket/Basket.API/Dockerfile
