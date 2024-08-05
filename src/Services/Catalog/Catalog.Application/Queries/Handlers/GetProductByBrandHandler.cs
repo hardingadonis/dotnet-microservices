@@ -12,7 +12,7 @@ namespace Catalog.Application.Queries.Handlers
 
         public GetProductByBrandHandler(IProductRepository productRepository)
         {
-            _productRepository = productRepository;
+            _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
         }
 
         public async Task<IEnumerable<ProductResponse>> Handle(GetProductByBrandQuery request, CancellationToken cancellationToken)

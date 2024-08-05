@@ -1,11 +1,7 @@
-[*.json]
+[*.{json,csproj,dcproj}]
 indent_style = space
 indent_size = 2
 
-[*.sh]
+[*.{sh,ps1}]
 indent_style = tab
-indent_size = 4
-
-[*.csproj,*.dcproj]
-indent_style = space
 indent_size = 4
