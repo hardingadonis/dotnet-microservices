@@ -1,6 +1,9 @@
 services:
   catalogdb:
     image: mongo
+  
+  basketdb:
+    image: redis:latest
 
   catalog.api:
     image: ghcr.io/hardingadonis/catalog.api:latest
@@ -9,3 +12,11 @@ services:
       dockerfile: src/Services/Catalog/Catalog.API/Dockerfile
     depends_on:
       - catalogdb
+  
+  basket.api:
+    image: ghcr.io/hardingadonis/basket.api:latest
+    build:
+      context: .
+      dockerfile: src/Services/Basket/Basket.API/Dockerfile
+    depends_on:
+      - basketdb
