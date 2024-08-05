@@ -1,6 +1,6 @@
 services:
   catalogdb:
-    image: mongo
+    image: mongo:latest
 
   catalog.api:
     image: ghcr.io/hardingadonis/dotnet-microservices-catalog.api:latest
