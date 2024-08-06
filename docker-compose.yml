@@ -20,3 +20,6 @@ services:
       dockerfile: src/Services/Basket/Basket.API/Dockerfile
     depends_on:
       - basketdb
+  
+  portainer:
+    image: portainer/portainer-ce:alpine-sts
