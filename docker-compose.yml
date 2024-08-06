@@ -3,7 +3,7 @@ services:
     image: mongo:latest
   
   basketdb:
-    image: redis:latest
+    image: redis:alpine
   
   catalog.api:
     image: ghcr.io/hardingadonis/dotnet-microservices-catalog.api:latest
