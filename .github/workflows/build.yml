@@ -6,11 +6,17 @@ on:
     - main
     - develop
     - feature/*
+    paths:
+    - src/**/*.cs
+    - src/**/*.csproj
   pull_request:
     branches:
     - main
     - develop
     - feature/*
+    paths:
+    - src/**/*.cs
+    - src/**/*.csproj
 
 jobs:
   build:

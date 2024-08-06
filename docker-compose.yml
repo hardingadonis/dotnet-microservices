@@ -3,7 +3,7 @@ services:
     image: mongo:latest
   
   basketdb:
-    image: redis:latest
+    image: redis:alpine
   
   catalog.api:
     image: ghcr.io/hardingadonis/dotnet-microservices-catalog.api:latest
@@ -20,3 +20,6 @@ services:
       dockerfile: src/Services/Basket/Basket.API/Dockerfile
     depends_on:
       - basketdb
+  
+  portainer:
+    image: portainer/portainer-ce:alpine-sts
