@@ -28,4 +28,3 @@ namespace Discount.Application.Queries.Handlers
         }
     }
 }
-}
