@@ -5,4 +5,6 @@ global using Discount.Application.Queries;
 global using Discount.Grpc.Protos;
 global using Discount.Infrastructure.Extensions;
 global using Grpc.Core;
+global using HealthChecks.UI.Client;
 global using MediatR;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
