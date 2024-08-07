@@ -14,7 +14,7 @@ namespace Discount.Infrastructure.Repositories
         public DiscountRepository(IConfiguration configuration)
         {
             _connectionString = configuration["DatabaseSettings:ConnectionString"]
-                ?? throw new ArgumentNullException("The PostgreSQL connection string is missing in the configuration. Please provide a valid connection string.");
+                ?? throw new InvalidDataException("The PostgreSQL connection string is missing in the configuration. Please provide a valid connection string.");
         }
 
         private static async Task<Coupon?> IsExistingCoupon(string productName, NpgsqlConnection connection)
