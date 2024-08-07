@@ -5,6 +5,9 @@ services:
   basketdb:
     image: redis:alpine
   
+  discountdb:
+    image: postgres:alpine
+  
   catalog.api:
     image: ghcr.io/hardingadonis/dotnet-microservices-catalog.api:latest
     build:
@@ -20,6 +23,14 @@ services:
       dockerfile: src/Services/Basket/Basket.API/Dockerfile
     depends_on:
       - basketdb
+  
+  discount.api:
+    image: ghcr.io/hardingadonis/dotnet-microservices-discount.api:latest
+    build:
+      context: .
+      dockerfile: src/Services/Discount/Discount.API/Dockerfile
+    depends_on:
+      - discountdb
   
   portainer:
     image: portainer/portainer-ce:alpine-sts
