@@ -6,6 +6,9 @@ EXPOSE 8085
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
 ARG BUILD_CONFIGURATION=Release
+ENV PROTOBUF_PROTOC=/usr/bin/protoc
+ENV gRPC_PluginFullPath=/usr/bin/grpc_csharp_plugin
+RUN apk add protobuf protobuf-dev grpc grpc-plugins
 WORKDIR /src
 COPY ["src/Services/Discount/Discount.API/Discount.API.csproj", "src/Services/Discount/Discount.API/"]
 COPY ["src/Services/Discount/Discount.Application/Discount.Application.csproj", "src/Services/Discount/Discount.Application/"]
