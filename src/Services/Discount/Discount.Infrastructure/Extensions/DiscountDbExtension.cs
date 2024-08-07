@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Discount.Infrastructure.Exceptions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Npgsql;
@@ -25,7 +26,7 @@ namespace Discount.Infrastructure.Extensions
             {
                 logger.LogError(ex, "An error occurred while migrating the database.");
 
-                throw new Exception("An error occurred while migrating the database.", ex);
+                throw new DatabaseMigrationException("An error occurred while migrating the database.", ex);
             }
 
             return serviceProvider;
@@ -39,7 +40,7 @@ namespace Discount.Infrastructure.Extensions
             using var command = connection.CreateCommand();
 
             command.CommandText = "DROP TABLE IF EXISTS Coupon";
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
 
             command.CommandText = @"
                 CREATE TABLE Coupon(
@@ -48,13 +49,13 @@ namespace Discount.Infrastructure.Extensions
                     Description TEXT,
                     Amount INT
                 )";
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
 
             command.CommandText = @"
                 INSERT INTO Coupon(ProductName, Description, Amount)
                 VALUES  ('Adidas Quick Force Indoor Badminton Shoes', 'Shoes Discount', 150),
                         ('Adidas FIFA World Cup 2018 OMB Football (White/Red/Black)', 'Football Discount', 500)";
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
         }
     }
 }
