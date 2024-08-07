@@ -2,7 +2,7 @@
 
 namespace Discount.Application.Mappers
 {
-    public class DiscountMapper
+    public static class DiscountMapper
     {
         private readonly static Lazy<IMapper> _lazy = new Lazy<IMapper>(() =>
         {
