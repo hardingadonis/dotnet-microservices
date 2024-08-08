@@ -1,3 +1,8 @@
+root = true
+
+[*]
+insert_final_newline = false
+
 [*.{json,yml,csproj}]
 indent_style = space
 indent_size = 2
