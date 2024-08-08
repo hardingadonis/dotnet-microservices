@@ -23,6 +23,7 @@ services:
       dockerfile: src/Services/Basket/Basket.API/Dockerfile
     depends_on:
       - basketdb
+      - discount.api
   
   discount.api:
     image: ghcr.io/hardingadonis/dotnet-microservices-discount.api:latest
