@@ -34,8 +34,8 @@ namespace Basket.Application.Commands.Handlers
                 }
                 catch (RpcException ex)
                 {
-                    _logger.LogInformation("No coupon availble for product with name = {ProductName}", item.ProductName);
-                    _logger.LogDebug("Discount grpc service is not available. {StatusCode} - {StatusDetail}", ex.StatusCode, ex.Status.Detail);
+                    _logger.LogInformation(ex, "No coupon availble for product with name = {ProductName}", item.ProductName);
+                    _logger.LogDebug(ex, "Discount grpc service is not available. {StatusCode} - {StatusDetail}", ex.StatusCode, ex.Status.Detail);
                 }
             }
 
