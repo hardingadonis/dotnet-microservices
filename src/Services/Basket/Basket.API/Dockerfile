@@ -6,6 +6,9 @@ EXPOSE 8083
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
 ARG BUILD_CONFIGURATION=Release
+ARG BUILD_CONFIGURATION=Release
+ENV PROTOBUF_PROTOC=/usr/bin/protoc
+ENV gRPC_PluginFullPath=/usr/bin/grpc_csharp_plugin
 WORKDIR /src
 COPY ["src/Services/Basket/Basket.API/Basket.API.csproj", "src/Services/Basket/Basket.API/"]
 COPY ["src/Services/Basket/Basket.Application/Basket.Application.csproj", "src/Services/Basket/Basket.Application/"]
