@@ -6,13 +6,13 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
-  
+
   basketdb:
     container_name: basketdb
     restart: always
     ports:
       - "6379:6379"
-  
+
   discountdb:
     container_name: discountdb
     environment:
@@ -38,7 +38,7 @@ services:
       - "DatabaseSettings__ConnectionString=mongodb://catalogdb:27017"
     ports:
       - "8080:8080"
-  
+
   basket.api:
     container_name: basket.api
     environment:
@@ -48,7 +48,7 @@ services:
       - "GrpcSettings__DiscountUrl=http://discount.api:8084"
     ports:
       - "8082:8082"
-  
+
   discount.api:
     container_name: discount.api
     environment:
@@ -59,7 +59,7 @@ services:
         condition: service_healthy
     ports:
       - "8084:8084"
-  
+
   portainer:
     container_name: portainer
     restart: always

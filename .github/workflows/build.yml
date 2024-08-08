@@ -3,40 +3,40 @@ name: Build
 on:
   push:
     branches:
-    - main
-    - develop
-    - feature/*
+      - main
+      - develop
+      - feature/*
     paths:
-    - src/**/*.cs
-    - src/**/*.csproj
+      - src/**/*.cs
+      - src/**/*.csproj
   pull_request:
     branches:
-    - main
-    - develop
-    - feature/*
+      - main
+      - develop
+      - feature/*
     paths:
-    - src/**/*.cs
-    - src/**/*.csproj
+      - src/**/*.cs
+      - src/**/*.csproj
 
 jobs:
   build:
     name: Build with ${{ matrix.configuration }} on ${{ matrix.platform }}
     runs-on: ${{ matrix.platform }}
-    
+
     strategy:
       fail-fast: false
       matrix:
         configuration:
-        - Debug
-        - Release
+          - Debug
+          - Release
         platform:
-        - windows-latest
-        - ubuntu-latest
-        - macos-latest
-    
+          - windows-latest
+          - ubuntu-latest
+          - macos-latest
+
     steps:
-    - name: Checkout source code
-      uses: actions/checkout@v4
-    
-    - name: Build source code
-      run: dotnet build ./EcommerceShop.sln -c ${{ matrix.configuration }}
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Build source code
+        run: dotnet build ./EcommerceShop.sln -c ${{ matrix.configuration }}
