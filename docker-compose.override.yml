@@ -45,6 +45,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_HTTPS_PORTS=8083
       - "DatabaseSettings__ConnectionString=basketdb:6379"
+      - "GrpcSettings__DiscountUrl=https://discount.api:8085"
     ports:
       - "8083:8083"
   

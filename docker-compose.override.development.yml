@@ -45,6 +45,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8082
       - "DatabaseSettings__ConnectionString=basketdb:6379"
+      - "GrpcSettings__DiscountUrl=http://discount.api:8084"
     ports:
       - "8082:8082"
   
@@ -57,7 +58,7 @@ services:
       discountdb:
         condition: service_healthy
     ports:
-      - "8085:8085"
+      - "8084:8084"
   
   portainer:
     container_name: portainer
