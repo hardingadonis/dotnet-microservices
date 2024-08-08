@@ -1,13 +1,13 @@
 services:
   catalogdb:
     image: mongo:latest
-  
+
   basketdb:
     image: redis:alpine
-  
+
   discountdb:
     image: postgres:alpine
-  
+
   catalog.api:
     image: ghcr.io/hardingadonis/dotnet-microservices-catalog.api:latest
     build:
@@ -15,7 +15,7 @@ services:
       dockerfile: src/Services/Catalog/Catalog.API/Dockerfile
     depends_on:
       - catalogdb
-  
+
   basket.api:
     image: ghcr.io/hardingadonis/dotnet-microservices-basket.api:latest
     build:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - basketdb
       - discount.api
-  
+
   discount.api:
     image: ghcr.io/hardingadonis/dotnet-microservices-discount.api:latest
     build:
@@ -32,6 +32,6 @@ services:
       dockerfile: src/Services/Discount/Discount.API/Dockerfile
     depends_on:
       - discountdb
-  
+
   portainer:
     image: portainer/portainer-ce:alpine-sts
