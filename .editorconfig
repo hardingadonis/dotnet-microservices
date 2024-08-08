@@ -1,4 +1,4 @@
-[*.{json,csproj,dcproj}]
+[*.{json,yml,csproj,dcproj}]
 indent_style = space
 indent_size = 2
 
