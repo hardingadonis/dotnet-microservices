@@ -8,9 +8,9 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..\..</DockerfileContext>
     <Copyright>Copyright (c) 2024 Minh Vương</Copyright>
-    <FileVersion>1.1.0</FileVersion>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <VersionPrefix>1.1.0</VersionPrefix>
+    <FileVersion>1.1.1</FileVersion>
+    <AssemblyVersion>1.1.1</AssemblyVersion>
+    <VersionPrefix>1.1.1</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>

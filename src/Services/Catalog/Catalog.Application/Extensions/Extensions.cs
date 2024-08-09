@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Catalog.Application
+namespace Catalog.Application.Extensions
 {
     public static class Extensions
     {
@@ -20,9 +20,9 @@ namespace Catalog.Application
         public static bool IsValidHex24Id(this string id)
         {
             return id.Length == 24 &&
-                   id.All(c => (c >= '0' && c <= '9') ||
-                               (c >= 'a' && c <= 'f') ||
-                               (c >= 'A' && c <= 'F'));
+                   id.All(c => c >= '0' && c <= '9' ||
+                               c >= 'a' && c <= 'f' ||
+                               c >= 'A' && c <= 'F');
         }
     }
 }

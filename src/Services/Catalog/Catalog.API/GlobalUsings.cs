@@ -2,13 +2,13 @@
 global using Asp.Versioning.ApiExplorer;
 global using Asp.Versioning.Conventions;
 global using Catalog.API.Swagger;
-global using Catalog.Application;
+global using Catalog.Application.Extensions;
 global using Catalog.Application.Commands;
 global using Catalog.Application.Queries;
 global using Catalog.Application.Responses;
 global using Catalog.Domain.Exceptions;
 global using Catalog.Domain.Specs;
-global using Catalog.Infrastructure;
+global using Catalog.Infrastructure.Extensions;
 global using HealthChecks.UI.Client;
 global using MediatR;
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
