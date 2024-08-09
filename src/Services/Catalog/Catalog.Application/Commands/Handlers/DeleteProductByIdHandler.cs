@@ -1,4 +1,5 @@
 ﻿using Catalog.Application.Exceptions;
+using Catalog.Application.Extensions;
 using Catalog.Domain.Repositories;
 using MediatR;
 
