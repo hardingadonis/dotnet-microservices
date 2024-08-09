@@ -7,9 +7,9 @@ namespace Ordering.Domain.Repositories
     {
         Task<IReadOnlyList<T>> GetAllAsync();
 
-        Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate);
+        Task<IReadOnlyList<T>> GetAllAsync(Expression<Func<T, bool>> predicate);
 
-        Task<T?> GetByIdAsync(int id);
+        Task<T?> GetByIdAsync(long id);
 
         Task<T> AddAsync(T entity);
 
