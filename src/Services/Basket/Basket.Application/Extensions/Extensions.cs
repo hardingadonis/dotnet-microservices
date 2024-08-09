@@ -3,7 +3,7 @@ using Discount.Grpc.Protos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Basket.Application
+namespace Basket.Application.Extensions
 {
     public static class Extensions
     {

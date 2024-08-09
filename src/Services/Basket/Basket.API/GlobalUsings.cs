@@ -2,12 +2,12 @@
 global using Asp.Versioning.ApiExplorer;
 global using Asp.Versioning.Conventions;
 global using Basket.API.Swagger;
-global using Basket.Application;
 global using Basket.Application.Commands;
+global using Basket.Application.Extensions;
 global using Basket.Application.Queries;
 global using Basket.Application.Responses;
 global using Basket.Domain.Exceptions;
-global using Basket.Infrastructure;
+global using Basket.Infrastructure.Extensions;
 global using HealthChecks.UI.Client;
 global using MediatR;
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;

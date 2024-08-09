@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace Basket.Infrastructure
+namespace Basket.Infrastructure.Extensions
 {
     public static class Extensions
     {

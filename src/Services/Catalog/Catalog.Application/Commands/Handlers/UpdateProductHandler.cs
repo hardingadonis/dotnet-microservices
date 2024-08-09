@@ -1,4 +1,5 @@
 ﻿using Catalog.Application.Exceptions;
+using Catalog.Application.Extensions;
 using Catalog.Application.Mappers;
 using Catalog.Domain.Entities;
 using Catalog.Domain.Repositories;
