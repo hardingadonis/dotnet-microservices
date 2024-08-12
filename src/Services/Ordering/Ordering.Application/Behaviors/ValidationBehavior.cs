@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using Ordering.Application.Exceptions;
 
 namespace Ordering.Application.Behaviours
 {
@@ -25,7 +26,7 @@ namespace Ordering.Application.Behaviours
 
                 if (failures.Any())
                 {
-                    throw new ValidationException(failures);
+                    throw new GroupedValidationException(failures);
                 }
             }
 
