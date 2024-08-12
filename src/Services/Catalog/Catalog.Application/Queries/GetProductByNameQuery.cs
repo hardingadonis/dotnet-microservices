@@ -3,8 +3,8 @@ using MediatR;
 
 namespace Catalog.Application.Queries
 {
-    public class GetProductByNameQuery(string name) : IRequest<IEnumerable<ProductResponse>>
-    {
-        public string Name { get; set; } = name;
-    }
+    public record GetProductByNameQuery
+    (
+        string Name
+    ) : IRequest<IEnumerable<ProductResponse>>;
 }
