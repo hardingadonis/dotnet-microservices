@@ -2,8 +2,8 @@
 
 namespace Basket.Application.Commands
 {
-    public class DeleteBasketByUserNameCommand(string userName) : IRequest<bool>
-    {
-        public string UserName { get; set; } = userName;
-    }
+    public record DeleteBasketByUserNameCommand
+    (
+        string UserName
+    ) : IRequest<bool>;
 }
