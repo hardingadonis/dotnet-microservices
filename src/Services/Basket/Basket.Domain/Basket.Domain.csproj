@@ -5,9 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Copyright>Copyright (c) 2024 Minh Vương</Copyright>
-    <FileVersion>1.1.1</FileVersion>
-    <AssemblyVersion>1.1.1</AssemblyVersion>
-    <VersionPrefix>1.1.1</VersionPrefix>
+    <FileVersion>1.1.2</FileVersion>
+    <AssemblyVersion>1.1.2</AssemblyVersion>
+    <VersionPrefix>1.1.2</VersionPrefix>
   </PropertyGroup>
 
 </Project>

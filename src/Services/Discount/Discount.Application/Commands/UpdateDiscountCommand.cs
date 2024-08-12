@@ -2,7 +2,8 @@
 
 namespace Discount.Application.Commands
 {
-    public record UpdateDiscountCommand(
+    public record UpdateDiscountCommand
+    (
         int Id,
         string ProductName,
         string Description,

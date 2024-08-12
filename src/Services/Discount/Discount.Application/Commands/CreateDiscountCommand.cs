@@ -3,7 +3,8 @@ using MediatR;
 
 namespace Discount.Application.Commands
 {
-    public record CreateDiscountCommand(
+    public record CreateDiscountCommand
+    (
         string ProductName,
         string Description,
         int Amount
