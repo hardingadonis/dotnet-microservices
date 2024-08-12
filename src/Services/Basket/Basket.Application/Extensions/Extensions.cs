@@ -1,7 +1,11 @@
-﻿using Basket.Application.GrpcServices;
+﻿using Basket.Application.Behaviours;
+using Basket.Application.GrpcServices;
 using Discount.Grpc.Protos;
+using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace Basket.Application.Extensions
 {
@@ -20,6 +24,10 @@ namespace Basket.Application.Extensions
 
                 options.Address = new Uri(discountUrl);
             });
+
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehavior<,>));
 
             return services;
         }
