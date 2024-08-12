@@ -3,5 +3,8 @@ using MediatR;
 
 namespace Discount.Application.Queries
 {
-    public record GetDiscountQuery(string ProductName) : IRequest<CouponModel>;
+    public record GetDiscountQuery
+    (
+        string ProductName
+    ) : IRequest<CouponModel>;
 }

@@ -4,10 +4,9 @@ using MediatR;
 
 namespace Basket.Application.Commands
 {
-    public class CreateBasketCommand : IRequest<BasketResponse>
-    {
-        public string UserName { get; set; } = string.Empty;
-
-        public IList<ShoppingCartItem> Items { get; set; } = [];
-    }
+    public record CreateBasketCommand
+    (
+        string UserName,
+        IList<ShoppingCartItem> Items
+    ) : IRequest<BasketResponse>;
 }

@@ -3,7 +3,5 @@ using MediatR;
 
 namespace Catalog.Application.Queries
 {
-    public class GetAllCategoriesQuery : IRequest<IEnumerable<CategoryResponse>>
-    {
-    }
+    public record GetAllCategoriesQuery : IRequest<IEnumerable<CategoryResponse>>;
 }
