@@ -1,8 +1,8 @@
-﻿using MediatR;
+﻿using Catalog.Application.Exceptions;
+using MediatR;
 using Microsoft.Extensions.Logging;
-using Catalog.Application.Exceptions;
 
-namespace Ordering.Application.Behaviours
+namespace Catalog.Application.Behaviours
 {
     public class UnhandledExceptionBehavior<TRequest, TResponse>
         : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
