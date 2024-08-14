@@ -1,0 +1,16 @@
+﻿global using Asp.Versioning;
+global using Asp.Versioning.ApiExplorer;
+global using Asp.Versioning.Conventions;
+global using MediatR;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Options;
+global using Microsoft.OpenApi.Models;
+global using Ordering.API.Swagger;
+global using Ordering.Application.Commands;
+global using Ordering.Application.Extensions;
+global using Ordering.Application.Queries;
+global using Ordering.Application.Responses;
+global using Ordering.Domain.Exceptions;
+global using Ordering.Infrastructure.Extensions;
+global using Swashbuckle.AspNetCore.SwaggerGen;
+global using System.Net;
